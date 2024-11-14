@@ -1,0 +1,1585 @@
+@use 'base'as *;
+
+.navbar-expand-md {
+  padding: 0.5rem 0;
+}
+
+.navbar-area.navbar-two {
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  top: 0;
+}
+
+.navbar-area.is-sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.09);
+  background-color: #ffffff !important;
+  animation: 500ms ease-in-out 0s normal none 1 running fadeInDown;
+}
+
+.navbar {
+  background: $color-main-bg;
+
+  &__container {
+    padding-left: 0;
+    padding-right: 0;
+
+    &__logo .white-logo {
+      display: none;
+    }
+
+    &__logo .black-logo {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      cursor: pointer;
+    }
+
+    &__link__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      @include display-flex();
+      align-items: center;
+      justify-content: space-between;
+
+      &__item {
+        position: relative;
+      }
+
+      &__item a {
+        display: inline-block;
+        padding-top: 25px;
+        padding-bottom: 25px;
+        width: 100%;
+        margin-right: 25px;
+      }
+
+      &__item:last-child a {
+        margin-right: 0;
+      }
+
+      &__item--active a {
+        color: $color-sub-title;
+      }
+
+      &__item a:hover {
+        color: $color-sub-title;
+      }
+    }
+
+    &__support {
+      @include display-flex();
+      align-items: center;
+      justify-content: space-between;
+
+      &__search i {
+        font-size: 18px;
+        color: $color-title;
+        margin-right: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+// CSS Dropdown Menu
+.dropdown-menu {
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+  background: #ffffff;
+  position: absolute;
+  border: none;
+  top: 70px;
+  left: 0;
+  width: 250px;
+  z-index: 99;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  @include border-radius(8px);
+  transition: all 0.3s ease-in-out;
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-bottom: 20px;
+}
+
+.dropdown-menu .dropdown-item {
+  text-transform: capitalize;
+  padding: 8px 15px;
+  margin: 0;
+  position: relative;
+  color: $color-title;
+  font-size: 15px;
+  font-weight: 400;
+  font-family: $font-desc;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  color: $color-sub-title;
+  letter-spacing: 1px;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  margin-top: 0;
+  right: 0;
+}
+
+// End CSS Dropdown Menu
+
+// CSS Main Banner Area
+.main-banner-area {
+  padding-top: 250px;
+  padding-bottom: 250px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background: url(../images/background/banner-bg1.jpg);
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-top: 20px;
+
+  &__content {
+    width: 100%;
+
+    &__sub-title {
+      color: $color-sub-title;
+      font-weight: 600;
+    }
+
+    &__title {
+      color: $color-title;
+      font-weight: 700;
+      font-size: 67px;
+      margin-bottom: 30px;
+    }
+
+    &__desc {
+      color: $color-title;
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: $font-desc;
+    }
+
+    &__btn--primary {
+      margin-top: 40px;
+      background: $color-sub-title;
+    }
+
+    &__btn--primary:hover {
+      background: $color-title;
+    }
+  }
+
+  &__animation {
+    position: relative;
+    margin-top: 150px;
+    margin-left: 40px;
+    width: 100%;
+    height: 100%;
+
+    &__img {
+      position: absolute;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    &__img:nth-child(1) {
+      top: 8px;
+      right: 42px;
+      z-index: 999;
+      width: 14%;
+    }
+
+    &__img:nth-child(2) {
+      left: 40%;
+      top: 100px;
+      z-index: 999;
+    }
+
+    &__img:nth-child(3) {
+      left: 95px;
+      z-index: 999;
+      top: 111px;
+    }
+
+    &__img:nth-child(4) {
+      left: -132px;
+      top: -114px;
+    }
+
+    &__img:nth-child(5) {
+      top: -215px;
+      left: 15%;
+      width: 78%;
+    }
+
+    &__img:last-child {
+      display: none;
+      // width: 100%;
+      // height: 410px;
+      // object-fit: cover;
+      // position: absolute;
+      // top: 0;
+      // left: 0;
+      // margin-top: -220px;
+    }
+  }
+}
+
+// CSS Animation Main Banner
+.home-page {
+  &__default-shape {
+    &__shape-1 {
+      position: absolute;
+      right: 10%;
+      top: 16%;
+      z-index: -1;
+      animation: animationFramesOne 20s infinite linear;
+    }
+
+    &__shape-2 {
+      position: absolute;
+      top: 16%;
+      left: 10%;
+      z-index: -1;
+    }
+
+    &__shape-2 img {
+      animation-name: rotateMe;
+      animation-duration: 10s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+    }
+
+    &__shape-3 {
+      position: absolute;
+      left: 5%;
+      bottom: 25%;
+      z-index: -1;
+      animation: animationFramesOne 20s infinite linear;
+    }
+
+    &__shape-4 {
+      position: absolute;
+      right: 10%;
+      bottom: 25%;
+      z-index: -1;
+      animation: animationFramesOne 20s infinite linear;
+    }
+
+    &__shape-5 {
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      z-index: -1;
+      animation: animationFramesOne 20s infinite linear;
+    }
+  }
+}
+
+// Fixe Z-Index
+.home-page__default-shape__shape-1__fixed {
+  z-index: 0;
+}
+
+// End Fix Z-Index
+
+// End CSS Animation Main Banner
+
+// End CSS Main Banner Area
+
+// Start CSS Services Area
+.services-area {
+  padding: 100px 0;
+  position: relative;
+  background: $color-box-bg-gray;
+
+  &__list {
+
+    &__box {
+      // cursor: pointer;
+      text-align: center;
+      margin-bottom: 30px;
+      @include border-radius(8px);
+      padding: 30px;
+      width: 100%;
+      // background: $color-main-bg;
+      // transition: 0.5s;
+      // overflow: hidden;
+      // position: relative;
+      // z-index: 99;
+      // transition: color 0.5s ease;
+      // box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.11);
+
+      &__icon i {
+        font-size: 27px;
+        color: $color-main-bg;
+        width: 60px;
+        height: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        @include border-radius(50%);
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 99;
+      }
+
+      &__title {
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      &__desc {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 0;
+        position: relative;
+        z-index: 99;
+      }
+
+      &__btn--trans {
+        color: $color-title;
+        font-size: 16px;
+        font-weight: 500;
+        background: transparent;
+        position: relative;
+        z-index: 99;
+      }
+
+      &__btn--trans:hover {
+        background: transparent;
+      }
+    }
+
+    // &__box::before {
+    //   content: '';
+    //   position: absolute;
+    //   top: -100%;
+    //   left: 0;
+    //   width: 100%;
+    //   height: 100%;
+    //   background-color: #3498db;
+    //   transition: top 0.5s ease;
+    // }
+
+    // &__box:hover {
+    //   box-shadow: 0 5px 40px 0 rgba(0, 0, 0, 0.11);
+    //   color: $color-main-bg;
+    //   animation: animate__fadeInDown 0.5s ease-in-out forwards;
+    // }
+
+    &__box:hover .services-area__list__box__desc,
+    &__box:hover .services-area__list__box__btn--trans {
+      color: $color-main-bg;
+    }
+
+    // &__box:hover::before {
+    //   top: 0;
+    // }
+  }
+}
+
+// End CSS Services Area
+
+// Start CSS Audience Area
+.audience-area {
+  padding: 100px 0;
+  position: relative;
+
+  &__image {
+    width: 100%;
+    height: auto;
+  }
+
+  &__content {
+    text-align: left;
+    margin-bottom: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    &__title {
+      font-size: 40px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    &__desc {
+      font-size: 16px;
+      color: $color-desc;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    &__desc span {
+      display: inline-flex;
+      margin-bottom: 25px;
+    }
+
+    &__btn--sucess {
+      background: $color-sub-title;
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    &__btn--sucess:hover {
+      background: $color-box-bg-sucess;
+    }
+  }
+
+  &__content::before {
+    top: 25%;
+    left: 3px;
+  }
+
+  &__content::after {
+    top: 25%;
+    left: 3px;
+  }
+}
+
+// End CSS Audience Area
+
+// Start CSS Solutions Area
+.solutions-area {
+  padding: 100px 0;
+
+  &__head {
+    position: relative;
+    margin-bottom: 40px;
+
+    &__title {
+      font-size: 40px;
+      margin-bottom: 40px;
+    }
+
+  }
+
+  &__head::before {
+    top: 34%;
+  }
+
+  &__head::after {
+    top: 33%;
+  }
+
+  &__content {
+
+    &__category {
+      width: 100%;
+      height: 100%;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 50px;
+
+        &__icon i {
+          display: inline-block;
+          height: 70px;
+          width: 70px;
+          line-height: 70px;
+          background-color: #f2e4fc;
+          color: #b45df5;
+          text-align: center;
+          font-size: 32px;
+          @include border-radius(50%);
+          margin-right: 20px;
+        }
+
+        &__info {
+          &__title {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            margin-bottom: 10px;
+          }
+
+          &__desc {
+            font-size: 14px;
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &__image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+.solutions-area__content__category:nth-child(4) .solutions-area__content__category__item {
+  margin-bottom: 0;
+}
+
+// End CSS Solutions Area
+
+// Start CSS Design Area
+.design-area {
+  position: relative;
+  padding: 50px 0 100px 0;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    // aspect-ratio: 4/3;
+  }
+
+  &__image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  &__content {
+    text-align: left;
+    width: 100%;
+    height: 100%;
+
+    &__head {
+      text-align: left;
+      width: 100%;
+      height: auto;
+      margin-bottom: 25px;
+      position: relative;
+
+      &__title {
+        font-size: 40px;
+        margin-bottom: 50px;
+      }
+
+      &__title span {
+        color: $color-sub-title;
+      }
+
+      &__desc {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+    }
+
+    &__head::before {
+      top: 30%;
+      left: 0;
+    }
+
+    &__head::after {
+      top: 30%;
+      left: 0;
+    }
+
+    &__list-tech {
+      width: 100%;
+      height: 100%;
+
+      &__item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+
+        &__icon i {
+          display: inline-block;
+          line-height: 32px;
+          text-align: center;
+          width: 32px;
+          height: 32px;
+          @include border-radius(50%);
+          background: #d7f2fc;
+          color: $color-sub-title;
+        }
+
+        &__title {
+          margin-left: 10px;
+          margin-bottom: 0;
+          font-size: 16px;
+          font-weight: 600;
+          color: $color-title;
+        }
+      }
+
+      &__set-margin:nth-child(5) &__item {
+        margin-bottom: 0;
+      }
+
+      &__set-margin:nth-child(6) &__item {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// End CSS Design Area
+
+// Start CSS Counter Area
+.counter-area {
+  padding: 100px 0;
+  background: $color-box-bg-eee;
+
+  &__title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 50px;
+    color: $color-title;
+  }
+
+  &__title span {
+    color: $color-sub-title;
+  }
+
+  &__list {
+
+    &__box {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 35px;
+      @include border-radius(8px);
+      background: $color-main-bg;
+
+      &__icon i {
+        display: inline-block;
+        font-size: 32px;
+        line-height: 70px;
+        width: 70px;
+        height: 70px;
+        @include border-radius(50%);
+        color: $color-sub-title;
+        background: #E2EDFD;
+        position: relative;
+        z-index: 99;
+        margin-bottom: 6px;
+        transition: top 0.5s ease;
+      }
+
+      &__num {
+        position: relative;
+        z-index: 99;
+        font-size: 50px;
+        font-weight: 700;
+        transition: top 0.5s ease;
+        margin-bottom: 6px;
+      }
+
+      &__title {
+        font-size: 16px;
+        margin: 0;
+        position: relative;
+        z-index: 99;
+        transition: top 0.5s ease;
+      }
+    }
+
+    &__box:hover {
+      .counter-area__list__box__title {
+        color: $color-main-bg;
+      }
+    }
+  }
+}
+
+// End CSS Counter Area
+
+// Start CSS Team Area
+.team-area {
+  position: relative;
+  padding: 100px 0;
+
+  &__list {
+    &__member {
+      position: relative;
+
+      &__avatar {
+        width: 100%;
+        height: 100%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        overflow: hidden;
+      }
+
+      &__avatar img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+
+      &__info {
+        box-shadow: 1px 20px 30px rgba(0, 0, 0, 0.07);
+        padding: 30px;
+        text-align: center;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        &__name {
+          font-size: 25px;
+          font-weight: 700;
+          margin-top: 0px;
+          margin-bottom: 10px;
+        }
+
+        &__position {
+          font-size: 14px;
+          margin: 0;
+          color: $color-sub-title;
+        }
+      }
+
+      &__socials {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        @include display-flex();
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        bottom: 20%;
+        left: 20%;
+
+        &__icon a {
+          display: inline-flex;
+          font-size: 18px;
+          width: 40px;
+          height: 40px;
+          color: $color-main-bg;
+          background: $color-sub-title;
+          align-items: center;
+          justify-content: center;
+          margin-right: 25px;
+          @include border-radius(50%);
+          transform: translateY(30px);
+          opacity: 0;
+          visibility: hidden;
+          transition: transform 0.5s ease, opacity 0.5s ease;
+        }
+
+        &__github a {
+          margin-right: 0;
+          transition-delay: 0.5s;
+        }
+
+        &__facebook a {
+          transition-delay: 0.1s;
+        }
+
+        &__instagram a {
+          transition-delay: 0.3s;
+        }
+
+        &__twitter a {
+          transition-delay: 0.2s;
+        }
+
+        &__icon a:hover {
+          background: $color-box-bg-sucess;
+          transform: translateY(-10px);
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    &__member:hover {
+      .team-area__list__member__socials__icon a {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+// End CSS Team Area    
+
+// Start CSS Pricing Area
+.pricing-area {
+  padding: 100px 0;
+  background: $color-box-bg-gray;
+
+  &__head {
+    margin-bottom: 80px;
+
+    &__title span {
+      color: $color-sub-title;
+    }
+  }
+
+  &__bottom {
+    &__box {
+      width: 100%;
+      height: 100%;
+      padding: 50px 70px;
+      border-top-left-radius: 45px;
+      border-bottom-right-radius: 45px;
+      background: $color-box-bg-secondary;
+
+      &__title {
+        font-size: 26px;
+        font-weight: 700;
+        margin-top: 0;
+        margin-bottom: 6px;
+        color: $color-title;
+      }
+
+      &__desc {
+        font-size: 16px;
+        color: $color-title;
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+
+      &__price {
+        font-size: 26px;
+        font-weight: 700;
+        color: $color-title;
+        width: 100px;
+        height: 100px;
+        @include display-flex();
+        align-items: center;
+        justify-content: center;
+        @include border-radius(50%);
+        background: $color-main-bg;
+        margin-bottom: 15px;
+      }
+
+      &__price sup {
+        font-weight: 400;
+      }
+
+      &__list-option {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 20px;
+
+        &__item {
+          display: inline-flex;
+          align-items: center;
+          width: 100%;
+          margin-bottom: 12px;
+
+          &__icon i {
+            display: inline-block;
+            font-size: 16px;
+            color: $color-sub-title;
+            margin-right: 8px;
+            font-weight: 400;
+          }
+
+          &__icon--not i {
+            margin-right: 10px;
+          }
+
+          &__desc {
+            margin: 0;
+            color: $color-title;
+            line-height: 1.5;
+          }
+        }
+      }
+
+      &__btn--light {
+        color: $color-title;
+        font-weight: 600;
+        @include border-radius(45px);
+        background: $color-main-bg;
+      }
+    }
+
+    &__box:hover {
+      .pricing-area__bottom__box__btn--light {
+        color: $color-main-bg;
+        background: $color-sub-title;
+      }
+    }
+  }
+}
+
+// End CSS Pricing Area
+
+// Start CSS Portfolio Area
+.portfolio-area {
+  padding: 100px 0;
+  background: $color-main-bg;
+
+  &__head {
+    margin-bottom: 80px;
+
+    &__title span {
+      color: $color-sub-title;
+    }
+  }
+
+  &__bottom {
+    cursor: pointer;
+
+    &__box {
+      margin-bottom: 25px;
+
+      &__image {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 416 / 354;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        overflow: hidden;
+      }
+
+      &__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &__info {
+        box-shadow: 1px 20px 30px rgba(0, 0, 0, 0.07);
+        padding: 30px;
+        text-align: left;
+        transition: color 0.4s ease;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        &__title {
+          font-size: 25px;
+          font-weight: 700;
+          margin-top: 0px;
+          margin-bottom: 25px;
+          transition: color 0.4s ease;
+        }
+
+        &__major {
+          font-size: 16px;
+          color: $color-title;
+          margin: 0;
+          transition: color 0.3s ease;
+        }
+      }
+    }
+
+    &__box:hover {
+      .portfolio-area__bottom__box {
+        &__info {
+          background: $color-sub-title;
+
+          &__title {
+            color: $color-main-bg;
+          }
+
+          &__major {
+            color: $color-main-bg;
+          }
+        }
+      }
+    }
+  }
+}
+
+// End CSS Portfolio Area
+
+// Start CSS Clients Area
+.clients-area {
+  position: relative;
+  padding: 0 0 100px 0;
+
+  &__head {
+    margin-bottom: 80px;
+  }
+
+  &__swiper-wrapper {
+    text-align: center;
+    margin-bottom: 40px;
+
+    &__slide__icon i {
+      display: inline-flex;
+      width: 80px;
+      height: 80px;
+      font-size: 48px;
+      align-items: center;
+      justify-content: center;
+      @include border-radius(50%);
+      background: $color-sub-title;
+      color: $color-main-bg;
+      margin-bottom: 25px;
+    }
+
+    &__slide__content {
+      font-size: 16px;
+      color: $color-desc;
+      width: 860px;
+      height: 100%;
+      margin-top: 0;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 50px;
+    }
+
+    &__slide__author {
+      position: relative;
+
+      &__name {
+        font-size: 26px;
+        font-weight: 700;
+        color: $color-title;
+        margin-bottom: 10px;
+      }
+
+      &__job {
+        font-size: 16px;
+        color: $color-title;
+        margin: 0;
+      }
+    }
+
+    &__slide__author::before {
+      content: "";
+      position: absolute;
+      top: -75%;
+      left: 50%;
+      width: 2px;
+      height: 34px;
+      background: $color-sub-title;
+    }
+  }
+}
+
+// End CSS Client Area
+
+// Start CSS Blog Area
+.blog-area {
+  padding: 100px 0;
+
+  &__head {
+    margin-bottom: 80px;
+
+    &__title span {
+      color: $color-sub-title;
+    }
+  }
+
+  &__list-blog {
+    &__box {
+      &__image {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4/3;
+        cursor: pointer;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        overflow: hidden;
+      }
+
+      &__image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &__info {
+        padding: 30px 25px;
+        box-shadow: 1px 20px 30px rgba(0, 0, 0, 0.07);
+        text-align: left;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        transition: color 0.4s ease;
+
+        &__date {
+          font-size: 14px;
+          margin: 0 0 15px 0;
+          color: $color-sub-title;
+        }
+
+        &__title {
+          cursor: pointer;
+          font-size: 24px;
+          font-weight: 700;
+          margin-bottom: 15px;
+          transition: color 0.3s ease;
+        }
+
+        &__desc {
+          font-size: 16px;
+          margin-bottom: 20px;
+        }
+
+        &__btn--special {
+          background: transparent;
+          color: $color-title;
+          padding: 0;
+          margin: 0;
+          font-weight: 600;
+          transition: 0.5s;
+        }
+      }
+    }
+
+    &__box:hover {
+      .blog-area__list-blog__box__info {
+        &__title {
+          color: $color-sub-title;
+        }
+
+        &__btn--special {
+          letter-spacing: 1px;
+          color: $color-sub-title;
+          background: transparent;
+        }
+      }
+    }
+  }
+}
+
+// End CSS Blog Area
+
+// Start CSS Contact Info Area
+.contact-info {
+  padding: 100px 0;
+  background: #F5F3F3;
+
+  &__subscribe-content {
+    margin-bottom: 40px;
+
+    &__info {
+      width: 100%;
+      height: 100%;
+
+      &__title {
+        font-size: 26px;
+        font-weight: 700;
+        margin: 0;
+        margin-bottom: 10px;
+      }
+
+      &__desc {
+        font-size: 16px;
+        color: $color-desc;
+        line-height: 1.8;
+      }
+    }
+  }
+
+  &__subscribe-form {
+    width: 100%;
+    margin-bottom: 40px;
+    @include display-flex();
+    align-items: center;
+    position: relative;
+
+    &__input {
+      border: none;
+      outline: none;
+      padding: 25px;
+      width: 100%;
+      font-size: 16px;
+      @include border-radius(8px);
+    }
+
+    &__btn--success {
+      position: absolute;
+      right: 8px;
+      background: $color-sub-title;
+    }
+
+    &__btn--success:hover {
+      background: $color-title;
+    }
+  }
+
+  &__about-us {
+    &__info {
+      margin-bottom: 15px;
+
+      &__title {
+        font-size: 24px;
+        font-weight: 700;
+        color: $color-title;
+        margin: 0;
+        margin-bottom: 25px;
+      }
+
+      &__desc {
+        font-size: 16px;
+        margin-bottom: 0;
+        line-height: 1.8;
+      }
+    }
+
+    &__socials {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      @include display-flex();
+      align-items: center;
+
+      &__icon a {
+        display: inline-flex;
+        font-size: 18px;
+        color: $color-main-bg;
+        width: 40px;
+        height: 40px;
+        @include border-radius(50%);
+        background: $color-sub-title;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+      }
+
+      &__github a {
+        margin-right: 0;
+      }
+
+      &__icon a:hover {
+        background: $color-box-bg-sucess;
+      }
+    }
+  }
+
+  &__links {
+
+
+    &__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $color-title;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    &__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      &__item a {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: $color-title;
+      }
+
+      &__item a:hover {
+        color: $color-sub-title;
+      }
+
+      &__item:last-child a {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__featured {
+    &__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $color-title;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    &__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      &__item a {
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: $color-title;
+      }
+
+      &__item a:hover {
+        color: $color-sub-title;
+      }
+
+      &__item:last-child a {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &__contact {
+    &__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: $color-title;
+      margin: 0;
+      margin-bottom: 20px;
+    }
+
+    &__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      &__item {
+        @include display-flex();
+        margin-bottom: 20px;
+
+        &__icon {
+          font-size: 24px;
+          margin-right: 15px;
+        }
+
+        &__content {
+          &__title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 6px;
+          }
+
+          &__desc {
+            font-size: 14px;
+            color: $color-title;
+            margin: 0;
+            line-height: 1.8;
+            cursor: pointer;
+          }
+
+          &__desc:hover {
+            color: $color-sub-title;
+          }
+        }
+      }
+
+      &__item:nth-child(3) {
+        margin-bottom: 0;
+
+        .contact-info__contact__list__item__content {
+          &__desc {
+            cursor: auto;
+          }
+
+          &__desc:hover {
+            color: $color-title;
+          }
+        }
+      }
+    }
+  }
+}
+
+// End CSS Contact Info Area
+
+// Start CSS Copyright Area
+.copyright-area {
+  padding: 25px 0;
+
+  &__content {
+    &__author {
+      margin-bottom: 0;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    &__author a {
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 0;
+    }
+
+    &__policy {
+      text-align: right;
+
+      &__terms {
+        margin: 0;
+      }
+
+      &__terms:hover {
+        color: $color-sub-title;
+      }
+
+      &__privacy {
+        margin: 0;
+      }
+
+      &__privacy:hover {
+        color: $color-sub-title;
+      }
+    }
+
+    &__policy span {
+      display: inline-block;
+      margin-right: 4px;
+      margin-left: 4px;
+      font-size: 14px;
+      color: $color-sub-title;
+    }
+  }
+}
+
+// End CSS Copyright Area
+
+// Start CSS Go Top
+.go-top {
+  position: fixed;
+  cursor: pointer;
+  top: 0;
+  right: 15px;
+  color: #ffffff;
+  background-color: $color-sub-title;
+  z-index: 4;
+  width: 40px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.9s;
+  border-radius: 50%;
+  border: 1px solid $color-sub-title;
+}
+
+.go-top.active {
+  top: 98%;
+  transform: translateY(-98%);
+  opacity: 1;
+  visibility: visible;
+}
+
+.go-top:hover {
+  color: $color-main-bg;
+  background: $color-title;
+}
+
+.go-top i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  transition: 0.5s;
+  font-size: 18px;
+}
+
+.go-top:hover i:first-child {
+  opacity: 0;
+  top: 0;
+  visibility: hidden;
+}
+
+.go-top:hover i:last-child {
+  opacity: 1;
+  visibility: visible;
+  top: 50%;
+}
+
+// End CSS Go Top
+
+// Start CSS Dark Area
+.dark-version {
+  position: fixed;
+  z-index: 1;
+  right: 95px;
+  bottom: 45px;
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+
+    input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: $main-color;
+    transition: 0.4s;
+
+    &:before {
+      position: absolute;
+      content: "";
+      height: 30px;
+      width: 30px;
+      left: 2.5px;
+      bottom: 4px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      transition: 0.4s;
+      box-shadow: 0 0px 15px #2020203d;
+      background: white url('https://i.ibb.co/FxzBYR9/night.png');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  input:checked+.slider {
+    background-color: $main-color;
+  }
+
+  input:focus+.slider {
+    box-shadow: 0 0 1px $main-color;
+  }
+
+  input:checked+.slider:before {
+    -webkit-transform: translateX(24px);
+    -ms-transform: translateX(24px);
+    transform: translateX(24px);
+    background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .slider {
+    &.round {
+      border-radius: 50px;
+
+      &:before {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+// End CSs Dark Area
+
+// CSS Dark & Light Theme
+.theme-light {
+  .black-logo {
+    display: block;
+  }
+
+  .white-logo {
+    display: none;
+  }
+
+  .white-image {
+    display: block;
+  }
+
+  .black-image {
+    display: none;
+  }
+}
+
+// End Darkk & Light Theme
