@@ -78,6 +78,16 @@ img {
     transform: rotate(360deg);
   }
 }
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+  }
+}
 .btn {
   font-size: 18px;
   font-weight: 500;
@@ -164,6 +174,35 @@ a:hover {
   }
   100% {
     transform: translateX(85px);
+  }
+}
+@media screen and (max-width: 991.98px) {
+  .head {
+    text-align: center;
+    position: relative;
+    width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+  }
+  .head__desc {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 767.98px) {
+  .head {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+  }
+  .head__title {
+    font-size: 26px;
+  }
+  .head__desc {
+    font-size: 13px;
   }
 }
 .slide-fadeInDown {
