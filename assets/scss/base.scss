@@ -164,6 +164,18 @@ img {
   }
 }
 
+@keyframes zoomIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(.3, .3, .3);
+    transform: scale3d(.3, .3, .3);
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
 // End Animation 
 
 .btn {
@@ -252,6 +264,41 @@ a:hover {
     transform: translateX(85px);
   }
 }
+
+@media screen and (max-width: 991.98px) {
+  .head {
+    text-align: center;
+    position: relative;
+    width: 620px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+
+    &__desc {
+      font-size: 14px;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .head {
+    text-align: center;
+    position: relative;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 60px;
+
+    &__title {
+      font-size: 26px;
+    }
+
+    &__desc {
+      font-size: 13px;
+    }
+  }
+}
+
 
 // End Head
 
