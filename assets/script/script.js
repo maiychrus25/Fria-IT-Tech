@@ -73,7 +73,6 @@ document.querySelectorAll('.fria-responsive-nav__expand').forEach(expandBtn => {
 });
 
 const head = document.querySelectorAll('.fria-responsive-nav__menu__dropdown-menu__item__head');
-console.log(head);
 
 head.forEach(item => {
   let found = false;
