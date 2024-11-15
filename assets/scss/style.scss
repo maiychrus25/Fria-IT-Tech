@@ -2192,7 +2192,7 @@
   right: 15px;
   color: #ffffff;
   background-color: $color-sub-title;
-  z-index: 4;
+  z-index: 9999;
   width: 40px;
   text-align: center;
   height: 40px;
@@ -2244,7 +2244,7 @@
 // Start CSS Dark Area
 .dark-version {
   position: fixed;
-  z-index: 1;
+  z-index: 9999;
   right: 95px;
   bottom: 45px;
 
