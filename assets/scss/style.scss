@@ -1,5 +1,6 @@
 @use 'base'as *;
 
+
 .navbar-expand-md {
   padding: 0.5rem 0;
 }
@@ -64,13 +65,17 @@
         margin-right: 0;
       }
 
-      &__item--active a {
+      &__item--active--success {
         color: $color-sub-title;
       }
 
       &__item a:hover {
         color: $color-sub-title;
       }
+    }
+
+    &__link__bars a {
+      display: none;
     }
 
     &__support {
@@ -88,43 +93,191 @@
   }
 }
 
+// Responsive Navbar Area
+.fria-responsive-nav {
+  display: none;
+
+  &__container {
+    @include display-flex();
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &__logo {
+    &__white-logo {
+      display: none;
+    }
+
+    &__black-logo {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    &__dropdown {
+      &__icon i {
+        display: inline-block;
+        font-size: 22px;
+      }
+    }
+
+    &__dropdown-menu {
+      position: absolute;
+      top: 80px;
+      left: 0;
+      padding: 0 20px;
+      width: 100%;
+      border: none;
+      list-style-type: none;
+      box-shadow: 0 7px 13px 0 rgba(0, 0, 0, 0.1);
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
+      transform: translateY(-10px);
+      background: $color-main-bg;
+      z-index: 100;
+      max-height: 40vh;
+      overflow-y: auto;
+
+      &.show {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+        transform: translateY(0);
+        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s;
+      }
+
+      &__item {
+        position: relative;
+        flex-wrap: wrap;
+
+        &__head {
+          width: 100%;
+          padding: 15px 0;
+          @include display-flex();
+          align-items: center;
+          cursor: pointer;
+          justify-content: space-between;
+          border-top: 1px solid #dbeefd;
+
+          &__link__icon {
+            font-size: 22px;
+            color: #677294;
+            cursor: pointer;
+          }
+
+          &__link__title {
+            color: #677294;
+            cursor: pointer;
+          }
+        }
+
+        &__head.active {
+          .fria-responsive-nav__menu__dropdown-menu__item__head__link__title {
+            color: $color-sub-title;
+          }
+        }
+
+        &__submenu {
+          position: relative;
+          width: 100%;
+          display: none;
+          opacity: 0;
+          transition: opacity 0.3s ease, transform 0.3s ease;
+          transform: translateY(-10px);
+          z-index: 101;
+          overflow-y: auto;
+          transition: color .15s ease-in-out,
+            background-color .15s ease-in-out,
+            border-color .15s ease-in-out;
+
+          &.show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+          }
+
+          &__item {
+            &__link {
+              color: #677294;
+              display: inline-block;
+              width: 100%;
+              padding: 15px 0;
+              padding-left: 40px;
+              border-top: 1px solid #dbeefd;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .fria-nav {
+    display: none;
+  }
+
+  .fria-responsive-nav {
+    display: block;
+  }
+}
+
+// End Responsive Navbar Area
+
 // CSS Dropdown Menu
-.dropdown-menu {
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
-  background: #ffffff;
-  position: absolute;
-  border: none;
-  top: 70px;
-  left: 0;
-  width: 250px;
-  z-index: 99;
-  display: block;
-  opacity: 0;
-  visibility: hidden;
-  @include border-radius(8px);
-  transition: all 0.3s ease-in-out;
-  margin-top: 20px;
-  padding-top: 20px;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-bottom: 20px;
+.navbar__container {
+  &__link__list {
+    &__item {
+      &__dropdown-menu {
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.1);
+        background: #ffffff;
+        position: absolute;
+        border: none;
+        top: 70px;
+        left: 0;
+        width: 250px;
+        z-index: 99;
+        display: block;
+        opacity: 0;
+        visibility: hidden;
+        @include border-radius(8px);
+        transition: all 0.3s ease-in-out;
+        margin-top: 20px;
+        padding-top: 20px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 20px;
+
+        &__dropdown-item {
+          text-transform: capitalize;
+          padding: 8px 15px;
+          margin: 0;
+          position: relative;
+          color: $color-title;
+          font-size: 15px;
+          font-weight: 400;
+          font-family: $font-desc;
+        }
+
+        &__dropdown-item:hover {
+          color: $color-sub-title;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
 }
 
-.dropdown-menu .dropdown-item {
-  text-transform: capitalize;
-  padding: 8px 15px;
-  margin: 0;
-  position: relative;
-  color: $color-title;
-  font-size: 15px;
-  font-weight: 400;
-  font-family: $font-desc;
-}
-
-.dropdown-menu .dropdown-item:hover {
-  color: $color-sub-title;
-  letter-spacing: 1px;
-}
 
 .dropdown-menu.show {
   opacity: 1;
@@ -236,6 +389,9 @@
       // top: 0;
       // left: 0;
       // margin-top: -220px;
+      visibility: visible;
+      animation-delay: 0.6s;
+      animation-name: zoomIn;
     }
   }
 }
@@ -300,15 +456,104 @@
 
 // End CSS Animation Main Banner
 
+@media screen and (max-width: 991.98px) {
+  .main-banner-area {
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 450px;
+
+    &__content {
+      &__sub-title {
+        font-size: 16px;
+      }
+
+      &__title {
+        font-size: 50px;
+      }
+
+      &__btn--primary {
+        padding: 14px 25px;
+        font-size: 14px;
+        margin-bottom: 40px;
+      }
+
+
+    }
+
+    &__animation {
+
+      &__img {
+        display: none;
+      }
+
+      &__img:last-child {
+        display: block;
+        position: absolute;
+        top: -100%;
+        left: -8%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .main-banner-area {
+    padding-bottom: 280px;
+
+    &__content {
+      &__sub-title {
+        font-size: 14px;
+      }
+
+      &__title {
+        font-size: 30px;
+      }
+
+      &__desc {
+        font-size: 14px;
+        font-weight: 400;
+      }
+    }
+
+    &__animation {
+      &__img:last-child {
+        left: -10%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 474.98px) {
+  .main-banner-area {
+    padding-bottom: 180px;
+
+    &__animation {
+      &__img:last-child {
+        left: -14%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 374.98px) {
+  .main-banner-area {
+    padding-bottom: 150px;
+  }
+}
+
 // End CSS Main Banner Area
 
 // Start CSS Services Area
 .services-area {
-  padding: 100px 0;
+  padding: 80px 0;
   position: relative;
   background: $color-box-bg-gray;
 
   &__list {
+
+    &__set-margin {
+      margin-bottom: 30px;
+    }
 
     &__box {
       // cursor: pointer;
@@ -317,6 +562,8 @@
       @include border-radius(8px);
       padding: 30px;
       width: 100%;
+      height: 100%;
+      padding-bottom: 0;
       // background: $color-main-bg;
       // transition: 0.5s;
       // overflow: hidden;
@@ -340,7 +587,7 @@
       }
 
       &__title {
-        font-size: 24px;
+        font-size: 22px;
         font-weight: 700;
       }
 
@@ -394,11 +641,44 @@
   }
 }
 
+
+
+// Responsive
+@media screend and (max-width: 991.98px) {
+  .services-area {
+    &__list {
+      &__box {
+        &__title {
+          font-size: 22px;
+        }
+
+        &__desc {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .services-area {
+    &__list {
+      &__box {
+        &__desc {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+}
+
+// End Responsive
+
 // End CSS Services Area
 
 // Start CSS Audience Area
 .audience-area {
-  padding: 100px 0;
+  padding: 80px 0 50px 0;
   position: relative;
 
   &__image {
@@ -419,10 +699,42 @@
       position: relative;
     }
 
+    &__title::before {
+      position: absolute;
+      content: "";
+      bottom: -22px;
+      left: 0;
+      height: 5px;
+      width: 85px;
+      overflow: hidden;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      background: #086AD8;
+    }
+
+    &__title::after {
+      position: absolute;
+      content: "";
+      bottom: -22px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      overflow: hidden;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      background: #fff;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-name: MOVE-BG;
+    }
+
     &__desc {
       font-size: 16px;
       color: $color-desc;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       line-height: 1.8;
       font-weight: 400;
     }
@@ -442,41 +754,91 @@
       background: $color-box-bg-sucess;
     }
   }
+}
 
-  &__content::before {
-    top: 25%;
-    left: 3px;
-  }
+// Responsive 
 
-  &__content::after {
-    top: 25%;
-    left: 3px;
+@media screen and (max-width: 767.98px) {
+  .audience-area {
+    &__content {
+      &__title {
+        margin-top: 40px;
+        font-size: 26px;
+      }
+
+      &__desc {
+        font-size: 14px;
+      }
+    }
   }
 }
+
+@media screen and (max-width: 575.98px) {
+  .audience-area {
+    &__content {
+      &__title {
+        margin-top: 40px;
+        font-size: 20px;
+      }
+
+      &__desc {
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+// End Responsive
 
 // End CSS Audience Area
 
 // Start CSS Solutions Area
 .solutions-area {
-  padding: 100px 0;
+  padding: 50px 0 100px 0;
 
   &__head {
     position: relative;
     margin-bottom: 40px;
+    text-align: center;
 
     &__title {
       font-size: 40px;
       margin-bottom: 40px;
+      position: relative;
     }
 
-  }
+    &__title::before {
+      position: absolute;
+      content: "";
+      bottom: -22px;
+      left: calc(100% / 2 - 42.5px);
+      height: 5px;
+      width: 85px;
+      overflow: hidden;
+      border-radius: 5px;
+      -moz-border-radius: 5px;
+      -webkit-border-radius: 5px;
+      background: #086AD8;
+    }
 
-  &__head::before {
-    top: 34%;
-  }
+    &__title::after {
+      position: absolute;
+      content: "";
+      bottom: -22px;
+      left: calc(100% / 2 - 42.5px);
+      width: 6px;
+      height: 6px;
+      overflow: hidden;
+      border-radius: 50%;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      background: #fff;
+      animation-duration: 2s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      animation-name: MOVE-BG;
+    }
 
-  &__head::after {
-    top: 33%;
   }
 
   &__content {
@@ -521,9 +883,15 @@
     }
   }
 
+  &__image {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 4;
+  }
+
   &__image img {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
   }
 }
@@ -531,6 +899,51 @@
 .solutions-area__content__category:nth-child(4) .solutions-area__content__category__item {
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 991.98px) {
+  .solutions-area__content__set--order {
+    order: 1;
+  }
+
+  .solutions-area {
+    padding-bottom: 50px;
+
+    &__image {
+      aspect-ratio: 4/3;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+// Responsive
+@media screen and (max-width: 767.98px) {
+  .solutions-area {
+    &__head {
+
+      &__title {
+        font-size: 26px;
+      }
+    }
+
+    &__content {
+
+      &__category {
+
+        &__info {
+          &__title {
+            font-size: 16px;
+          }
+
+          &__desc {
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+// End Responsive
 
 // End CSS Solutions Area
 
@@ -566,10 +979,43 @@
       &__title {
         font-size: 40px;
         margin-bottom: 50px;
+        position: relative;
       }
 
       &__title span {
         color: $color-sub-title;
+      }
+
+      &__title::before {
+        position: absolute;
+        content: "";
+        bottom: -22px;
+        left: 0;
+        height: 5px;
+        width: 85px;
+        overflow: hidden;
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        background: #086AD8;
+      }
+
+      &__title::after {
+        position: absolute;
+        content: "";
+        bottom: -22px;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        overflow: hidden;
+        border-radius: 50%;
+        -moz-border-radius: 50%;
+        -webkit-border-radius: 50%;
+        background: #fff;
+        animation-duration: 2s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-name: MOVE-BG;
       }
 
       &__desc {
@@ -628,11 +1074,62 @@
   }
 }
 
+// Responsive
+@media screen and (max-width: 991.98px) {
+  .design-area {
+    padding-bottom: 80px;
+
+    &__image {
+      margin-bottom: 60px;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;
+    }
+
+    &__image img {
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .design-area__content__head__title {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .design-area__content__head__title::before {
+    left: calc(100% / 2 - 42.5px);
+  }
+
+  .design-area__content__head__title::after {
+    left: calc(100% / 2 - 42.5px);
+  }
+
+  .design-area__content__head__desc {
+    font-size: 14px;
+  }
+
+  .design-area__content__list-tech__item__title {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}
+
+@media screen and (max-width: 474.98px) {
+  .design-area__content__list-tech__item__title {
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
+
+// End Responsive
+
 // End CSS Design Area
 
 // Start CSS Counter Area
 .counter-area {
-  padding: 100px 0;
+  padding: 80px 0;
   background: $color-box-bg-eee;
 
   &__title {
@@ -696,16 +1193,41 @@
   }
 }
 
+// Responsive 
+@media screen and (max-width: 767.98px) {
+  .counter-area__title {
+    font-size: 26px;
+  }
+
+  .counter-area__list__box__icon i {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 27px;
+  }
+
+  .counter-area__list__box__num {
+    font-size: 36px;
+  }
+
+  .counter-area__list__box__title {
+    font-size: 15px;
+  }
+}
+
+// End Responsive
+
 // End CSS Counter Area
 
 // Start CSS Team Area
 .team-area {
   position: relative;
-  padding: 100px 0;
+  padding: 80px 0;
 
   &__list {
     &__member {
       position: relative;
+      width: 100%;
 
       &__avatar {
         width: 100%;
@@ -748,10 +1270,11 @@
         padding: 0;
         @include display-flex();
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         position: absolute;
-        bottom: 20%;
-        left: 20%;
+        bottom: 22%;
+        left: 0;
+        width: 100%;
 
         &__icon a {
           display: inline-flex;
@@ -762,7 +1285,7 @@
           background: $color-sub-title;
           align-items: center;
           justify-content: center;
-          margin-right: 25px;
+          margin-right: 10px;
           @include border-radius(50%);
           transform: translateY(30px);
           opacity: 0;
@@ -806,11 +1329,72 @@
   }
 }
 
+// Responsive
+@media screen and (max-width: 1199.98px) {
+  .team-area__list__member__socials {
+    bottom: 26%;
+  }
+}
+
+@media screen and (max-width: 991.98px) {
+  .team-area__list__member {
+    margin-bottom: 25px;
+  }
+
+  .team__area__list--set--align {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .team-area__list__member__info__name {
+    font-size: 20px;
+  }
+
+  .team-area__list__member__info__position {
+    font-size: 14px;
+  }
+
+  .team-area__list__member__socials {
+    bottom: 28%;
+  }
+
+  .team-area__list__member__socials a {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .team-area__list__member__socials {
+    bottom: 20%;
+  }
+
+  .team-area__list__member__socials a {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 420.98px) {
+  .team-area__list__member__socials {
+    bottom: 24%;
+  }
+
+  .team-area__list__member__socials a {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+// End Responsive
+
 // End CSS Team Area    
 
 // Start CSS Pricing Area
 .pricing-area {
-  padding: 100px 0;
+  padding: 80px 0;
   background: $color-box-bg-gray;
 
   &__head {
@@ -912,11 +1496,26 @@
   }
 }
 
+@media screen and (max-width: 991.98px) {
+  .pricing-area__bottom__box {
+    margin-bottom: 40px;
+  }
+
+  .pricing-area__bottom__box__set--margin {
+    margin-bottom: 0;
+  }
+
+  .pricing-area__bottom__set--align {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 // End CSS Pricing Area
 
 // Start CSS Portfolio Area
 .portfolio-area {
-  padding: 100px 0;
+  padding: 80px 0;
   background: $color-main-bg;
 
   &__head {
@@ -991,12 +1590,28 @@
   }
 }
 
+@media screen and (max-width: 767.98px) {
+  .portfolio-area__bottom__box__info__title {
+    font-size: 18px;
+  }
+
+  .portfolio-area__bottom__box__info__major {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 475.98px) {
+  .portfolio-area__head__title {
+    font-size: 24px;
+  }
+}
+
 // End CSS Portfolio Area
 
 // Start CSS Clients Area
 .clients-area {
   position: relative;
-  padding: 0 0 100px 0;
+  padding: 0 0 50px 0;
 
   &__head {
     margin-bottom: 80px;
@@ -1021,17 +1636,18 @@
 
     &__slide__content {
       font-size: 16px;
-      color: $color-desc;
+      color: #666666;
       width: 860px;
       height: 100%;
       margin-top: 0;
       margin-left: auto;
       margin-right: auto;
-      margin-bottom: 50px;
+      margin-bottom: 0;
     }
 
     &__slide__author {
       position: relative;
+      padding-top: 60px;
 
       &__name {
         font-size: 26px;
@@ -1050,7 +1666,7 @@
     &__slide__author::before {
       content: "";
       position: absolute;
-      top: -75%;
+      top: 10%;
       left: 50%;
       width: 2px;
       height: 34px;
@@ -1059,11 +1675,55 @@
   }
 }
 
+// Responsive
+@media screen and (max-width: 991.98px) {
+  .clients-area__swiper-wrapper__slide__content {
+    font-size: 15px;
+    max-width: 600px;
+    font-style: italic;
+    margin: 20px auto 0;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .clients-area__swiper-wrapper__slide__content {
+    font-style: italic;
+    max-width: 480px;
+    margin: 20px auto 0 0;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 14px;
+  }
+
+  .clients-area__swiper-wrapper__slide__icon i {
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+  }
+}
+
+@media screen and (max-width: 575.98px) {
+  .clients-area__swiper-wrapper__slide__author__name {
+    font-size: 22px;
+  }
+
+  .clients-area__swiper-wrapper__slide__content {
+    max-width: 90%;
+    font-size: 13px;
+  }
+
+  .clients-area__swiper-wrapper__slide__author__job {
+    font-size: 14px;
+  }
+}
+
+// End Responsive
+
 // End CSS Client Area
 
 // Start CSS Blog Area
 .blog-area {
-  padding: 100px 0;
+  padding: 50px 0;
 
   &__head {
     margin-bottom: 80px;
@@ -1075,6 +1735,8 @@
 
   &__list-blog {
     &__box {
+      margin-bottom: 25px;
+
       &__image {
         width: 100%;
         height: 100%;
@@ -1107,7 +1769,7 @@
 
         &__title {
           cursor: pointer;
-          font-size: 24px;
+          font-size: 22px;
           font-weight: 700;
           margin-bottom: 15px;
           transition: color 0.3s ease;
@@ -1145,11 +1807,21 @@
   }
 }
 
+@media screen and (max-width: 767.98px) {
+  .blog-area__list-blog__box__info__title {
+    font-size: 18px;
+  }
+
+  .blog-area__list-blog__box__info__desc {
+    font-size: 14px;
+  }
+}
+
 // End CSS Blog Area
 
 // Start CSS Contact Info Area
 .contact-info {
-  padding: 100px 0;
+  padding: 80px 0;
   background: #F5F3F3;
 
   &__subscribe-content {
@@ -1215,7 +1887,7 @@
 
       &__desc {
         font-size: 16px;
-        margin-bottom: 0;
+        margin-bottom: 30px;
         line-height: 1.8;
       }
     }
@@ -1377,6 +2049,73 @@
   }
 }
 
+// Responsive
+@media screen and (max-width: 991.98px) {
+  .contact-info__box {
+    margin-bottom: 30px;
+  }
+
+  .contact-info__contact {
+    margin-bottom: 0;
+  }
+
+  .contact-info__featured {
+    margin-bottom: 0;
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .contact-info__links__title {
+    font-size: 18px;
+  }
+
+  .contact-info__about-us__info__desc {
+    font-size: 14px;
+  }
+
+  .contact-info__subscribe-content__info__desc {
+    font-size: 14px;
+  }
+
+  .contact-info__subscribe-form {
+    display: block;
+  }
+
+  .contact-info__subscribe-form__input {
+    margin-bottom: 20px;
+  }
+
+  .contact-info__subscribe-form__btn--success {
+    display: block;
+    position: relative;
+  }
+
+  .contact-info__featured__title {
+    font-size: 18px;
+  }
+
+  .contact-info__contact__title {
+    font-size: 18px;
+  }
+}
+
+
+@media screen and (max-width: 575.98px) {
+  .contact-info__featured {
+    margin-bottom: 30px;
+  }
+
+  .contact-info__featured__list__item a {
+    font-size: 14px;
+  }
+
+  .contact-info__links__list__item a {
+    font-size: 14px;
+  }
+}
+
+// End Responsive
+
 // End CSS Contact Info Area
 
 // Start CSS Copyright Area
@@ -1423,6 +2162,23 @@
       font-size: 14px;
       color: $color-sub-title;
     }
+  }
+}
+
+@media screen and (max-width: 767.98px) {
+  .copyright-area__set {
+    flex-direction: column;
+    justify-content: center !important;
+  }
+
+  .copyright-area__content__author {
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .copyright-area__content__policy {
+    text-align: center;
+    font-size: 14px;
   }
 }
 
