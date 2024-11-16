@@ -399,9 +399,8 @@ a:hover {
 .fria-responsive-nav__menu__dropdown-menu__item__head__link__title {
   color: #677294;
   cursor: pointer;
-  
   font-size: 16px;
-    font-family: "Catamaran", sans-serif;
+  font-family: "Catamaran", sans-serif;
 }
 .fria-responsive-nav__menu__dropdown-menu__item__head.active .fria-responsive-nav__menu__dropdown-menu__item__head__link__title {
   color: #086AD8;
