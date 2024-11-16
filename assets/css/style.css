@@ -290,11 +290,13 @@ a:hover {
   position: relative;
 }
 .navbar__container__link__list__item a {
-  display: inline-block;
-  padding-top: 25px;
-  padding-bottom: 25px;
-  width: 100%;
-  margin-right: 25px;
+    display: inline-block;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    width: 100%;
+    margin-right: 25px;
+    font-size: 16px;
+    font-family: 'Catamaran', sans-serif;
 }
 .navbar__container__link__list__item:last-child a {
   margin-right: 0;
